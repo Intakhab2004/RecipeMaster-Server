@@ -2,10 +2,12 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const OTP = require("../models/OTP");
+const PersonalDetails = require("../models/PersonalDetails");
 const { mailSender } = require("../config/mailConfig");
 const { signUpSchema, usernameSchema } = require("../schemas/signUpSchema");
 const { verifySchema } = require("../schemas/verifySchema");
 const { siginSchema } = require("../schemas/signinSchema");
+
 
 
 exports.sendOTP = async(req, res) => {
@@ -170,11 +172,25 @@ exports.signUp = async(req, res) => {
         }
 
         else{
+            const userDetails = new PersonalDetails({
+                firstName: null,
+                lastName: null,
+                gender: null,
+                DOB: null,
+                contactNumber: null
+            })
+
+            await userDetails.save();
+
             const newUser = new User({
                 username: userData.username,
                 email: userData.email,
                 password: hashedPassword,
-                avatar: ""
+                avatar: {
+                    imageURL: "",
+                    publicId: ""
+                },
+                personalDetails: userDetails._id
             })
             await newUser.save();
         }

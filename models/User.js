@@ -22,7 +22,13 @@ const userSchema = new mongoose.Schema({
     },
 
     avatar: {
-        type: String
+        imageURL: String,
+        publicId: String
+    },
+
+    personalDetails: {
+        type: mongoose.Types.ObjectId,
+        ref: "PersonalDetails"
     },
 
     favoriteRecipes: [{
