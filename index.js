@@ -5,7 +5,9 @@ const userRoutes = require("./routes/userRoute");
 const recipeRoutes = require("./routes/recipeRoute");
 const nutritionRoutes = require("./routes/nutritionRoute");
 const dataRoutes = require("./routes/dataRoute");
+const profileRoute = require("./routes/profileRoute");
 const cors = require("cors");
+const fileupload = require("express-fileupload");
 
 const app = express();
 
@@ -15,6 +17,11 @@ require("dotenv").config();
 // Required middlewares
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(fileupload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/"
+}))
 
 app.use(cors({
     origin: "http://localhost:3000",
@@ -26,6 +33,7 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/recipe", recipeRoutes);
 app.use("/api/v1/nutrition", nutritionRoutes);
 app.use("/api/v1/data", dataRoutes);
+app.use("/api/v1/profile", profileRoute);
 
 
 // Starting the server
