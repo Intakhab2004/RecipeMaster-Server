@@ -47,6 +47,7 @@ exports.getUserDetails = async(req, res) => {
                                                 .select("-password")
                                                 .populate("favoriteRecipes")
                                                 .populate("nutritionLogs")
+                                                .populate("personalDetails")
                 
         if(!user){
             console.log("User not found");

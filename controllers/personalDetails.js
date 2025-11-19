@@ -15,7 +15,7 @@ exports.updateDetails = async(req, res) => {
             firstName,
             lastName,
             gender,
-            DOB,
+            DOB: DOB ? new Date(DOB) : null,
             contactNumber
         }
 
@@ -143,6 +143,10 @@ exports.deleteUser = async(req, res) => {
         await PersonalDetails.findByIdAndDelete(user.personalDetails);
 
         await User.findByIdAndDelete(user._id);
+
+        res.clearCookie("token", {
+            httpOnly: true
+        })
 
         return res.status(200).json({
             success: true,

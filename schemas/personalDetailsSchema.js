@@ -4,7 +4,8 @@ exports.personalDetailsSchema = z.object({
     firstName: z.string()
                         .min(2, "First name should be of atleast 2 characters long")
                         .max(12, "First name should not be more than 12 characters")
-                        .optional(),
+                        .optional()
+                        .or(z.literal("")),
 
     lastName: z.string()
                         .min(2, {message: "Last name should be at least 2 characters"})
@@ -15,7 +16,7 @@ exports.personalDetailsSchema = z.object({
 
     gender: z.string().optional(),
 
-    DOB: z.string().optional(),
+    DOB: z.date().nullable().optional(),
 
     contactNumber: z.string()
                             .regex(/^\d{10}$/, { message: "Contact number must be 10 digits" })
