@@ -4,7 +4,7 @@ const User = require("../models/User");
 const OTP = require("../models/OTP");
 const PersonalDetails = require("../models/PersonalDetails");
 const { mailSender } = require("../config/mailConfig");
-const { signUpSchema, usernameSchema } = require("../schemas/signUpSchema");
+const { signUpSchema, usernameSchema } = require("../schemas/signupSchema");
 const { verifySchema } = require("../schemas/verifySchema");
 const { siginSchema } = require("../schemas/signinSchema");
 
