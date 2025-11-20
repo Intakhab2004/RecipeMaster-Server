@@ -9,7 +9,7 @@ const {
 } = require("../controllers/nutritions")
 
 
-router.get("/recipe-nutrition", auth, logNutritionByRecipeId);
-router.get("/manual-nutrition", auth, logNutritionManually);
+router.post("/recipe-nutrition", auth, logNutritionByRecipeId);
+router.post("/manual-nutrition", auth, logNutritionManually);
 
 module.exports = router;

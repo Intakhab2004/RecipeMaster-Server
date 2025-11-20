@@ -36,12 +36,13 @@ exports.logNutritionByRecipeId = async(req, res) => {
 
         const newNutrition = new NutritionLog({
             user: userId,
-            recipe: recipeId,
+            recipe: source._id,
+            customMeals: source.title,
             nutrition: {
                 calories: source.nutritions?.calories || "",
-                protein: source.nutritions?.protein || "",
-                carbs: source.nutritions?.carbs || "",
-                fat: source.nutritions?.fat || ""
+                protein: parseInt(source.nutritions?.protein) || "",
+                carbs: parseInt(source.nutritions?.carbs) || "",
+                fat: parseInt(source.nutritions?.fat) || ""
             }
         })
         await newNutrition.save();
@@ -77,7 +78,7 @@ exports.logNutritionByRecipeId = async(req, res) => {
 
 exports.logNutritionManually = async(req, res) => {
     try{
-        const { recipeName, calories, protein, carbs, fats } = req.body;
+        const { recipeName, calories, protein, carbs, fat } = req.body;
         const userId = req.user.id;
 
         const user = await User.findById(userId);
@@ -95,7 +96,7 @@ exports.logNutritionManually = async(req, res) => {
             calories,
             protein,
             carbs,
-            fats
+            fat
         }
 
         const validationResult = customMealSchema.safeParse(customMealQuerySchema);
