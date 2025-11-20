@@ -4,7 +4,7 @@ const otpTemplate = (otp, username) => {
         <div style="font-family:Arial, sans-serif; background:#f4f4f4; padding:30px;">
             <div style="max-width:600px; margin:auto; background:#fff; border-radius:10px; padding:30px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center;">
                 <h1 style="color:#4A90E2; margin-bottom:10px;">
-                    TaskHunter
+                    RecipeMaster
                 </h1>
                 <p style="color:#888; margin-top:0; margin-bottom:20px;">
                     Secure Login Verification
