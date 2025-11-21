@@ -14,17 +14,8 @@ const app = express();
 require("dotenv").config();
 
 
-// Required middlewares
-app.use(express.json());
-app.use(cookieParser());
-
-app.use(fileupload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/"
-}))
-
 const allowedOrigins = [
-    "https://recipe-master-frontend.vercel.app/",
+    "https://recipe-master-frontend.vercel.app",
     "http://localhost:3000"
 ]
 
@@ -39,6 +30,15 @@ app.use(cors({
     },
     credentials: true
 }));
+
+// Required middlewares
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(fileupload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/"
+}))
 
 // Mounting api-url on routes
 app.use("/api/v1/user", userRoutes);
