@@ -348,6 +348,8 @@ exports.signIn = async(req, res) => {
 
         const cookieOptions = {
             httpOnly: true,
+            secure: true,
+            sameSite: "None",
             expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
         }
 
@@ -370,7 +372,9 @@ exports.signIn = async(req, res) => {
 exports.logout = async(req, res) => {
     try{
         res.clearCookie("token", {
-            httpOnly: true
+            httpOnly: true,
+            secure: true,
+            sameSite: "None"
         })
 
         return res.status(200).json({

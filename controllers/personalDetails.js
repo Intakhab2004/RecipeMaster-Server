@@ -145,7 +145,9 @@ exports.deleteUser = async(req, res) => {
         await User.findByIdAndDelete(user._id);
 
         res.clearCookie("token", {
-            httpOnly: true
+            httpOnly: true,
+            secure: true,
+            sameSite: "None"
         })
 
         return res.status(200).json({
