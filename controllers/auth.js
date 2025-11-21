@@ -166,7 +166,8 @@ exports.signUp = async(req, res) => {
             existingUser.email = userData.email;
             existingUser.username = userData.username;
             existingUser.password = hashedPassword;
-            existingUser.avatar = ""
+            existingUser.avatar.imageURL = "";
+            existingUser.avatar.publicId = "";
 
             await existingUser.save();
         }
