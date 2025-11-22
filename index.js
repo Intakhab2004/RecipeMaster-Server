@@ -6,6 +6,7 @@ const recipeRoutes = require("./routes/recipeRoute");
 const nutritionRoutes = require("./routes/nutritionRoute");
 const dataRoutes = require("./routes/dataRoute");
 const profileRoute = require("./routes/profileRoute");
+const chatbotRoute = require("./routes/chatbotRoute");
 const cors = require("cors");
 const fileupload = require("express-fileupload");
 
@@ -46,6 +47,7 @@ app.use("/api/v1/recipe", recipeRoutes);
 app.use("/api/v1/nutrition", nutritionRoutes);
 app.use("/api/v1/data", dataRoutes);
 app.use("/api/v1/profile", profileRoute);
+app.use("/api/v1/chatbot", chatbotRoute);
 
 
 // Starting the server
